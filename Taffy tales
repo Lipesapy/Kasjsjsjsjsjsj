@@ -1,0 +1,50 @@
+-- Script de moedas e doces ilimitados e ESP para Roblox
+local player = game.Players.LocalPlayer
+local moedas = 0
+local doces = 0
+
+function adicionarMoedas(valor)
+    moedas = moedas + valor
+    player.leaderstats.Moedas.Value = moedas
+    print("Moedas adicionadas: " .. valor)
+    print("Total de moedas: " .. moedas)
+end
+
+function adicionarDoces(valor)
+    doces = doces + valor
+    player.leaderstats.Doces.Value = doces
+    print("Doces adicionados: " .. valor)
+    print("Total de doces: " .. doces)
+end
+
+function moedasEDocesIlimitados()
+    while true do
+        adicionarMoedas(1000) -- Adiciona 1000 moedas a cada iteração
+        adicionarDoces(1000) -- Adiciona 1000 doces a cada iteração
+        wait(1) -- Espera 1 segundo antes de adicionar mais moedas e doces
+    end
+end
+
+function ESP()
+    for _, npc in pairs(game.Workspace.NPCs:GetChildren()) do
+        if not npc:FindFirstChild("ESP") then
+            local esp = Instance.new("BillboardGui", npc)
+            esp.Name = "ESP"
+            esp.Size = UDim2.new(1, 0, 1, 0)
+            esp.AlwaysOnTop = true
+
+            local frame = Instance.new("Frame", esp)
+            frame.Size = UDim2.new(1, 0, 1, 0)
+            frame.BackgroundTransparency = 0.5
+            frame.BackgroundColor3 = Color3.new(1, 0, 0)
+        end
+    end
+
+    for _, item in pairs(game.Workspace.Items:GetChildren()) do
+        if not item:FindFirstChild("ESP") then
+            local esp = Instance.new("BillboardGui", item)
+            esp.Name = "ESP"
+            esp.Size = UDim2.new(1, 0, 1, 0)
+            esp.AlwaysOnTop = true
+
+            local frame = Instance.new("Frame", esp
